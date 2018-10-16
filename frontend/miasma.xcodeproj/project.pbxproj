@@ -10,7 +10,7 @@
 		E507E3E42175483300A1AE14 /* plot_small.png in Resources */ = {isa = PBXBuildFile; fileRef = E507E3E22175483300A1AE14 /* plot_small.png */; };
 		E507E3E52175483300A1AE14 /* plot_large.png in Resources */ = {isa = PBXBuildFile; fileRef = E507E3E32175483300A1AE14 /* plot_large.png */; };
 		E54BD0532175110400C98AEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BD0522175110400C98AEB /* AppDelegate.swift */; };
-		E54BD0552175110400C98AEB /* CO2.sks in Resources */ = {isa = PBXBuildFile; fileRef = E54BD0542175110400C98AEB /* CO2.sks */; };
+		E54BD0552175110400C98AEB /* CO2map.sks in Resources */ = {isa = PBXBuildFile; fileRef = E54BD0542175110400C98AEB /* CO2map.sks */; };
 		E54BD0572175110400C98AEB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E54BD0562175110400C98AEB /* Actions.sks */; };
 		E54BD0592175110400C98AEB /* MapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BD0582175110400C98AEB /* MapScene.swift */; };
 		E54BD05B2175110400C98AEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BD05A2175110400C98AEB /* GameViewController.swift */; };
@@ -18,11 +18,14 @@
 		E54BD0602175110800C98AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54BD05F2175110800C98AEB /* Assets.xcassets */; };
 		E54BD0632175110800C98AEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E54BD0612175110800C98AEB /* LaunchScreen.storyboard */; };
 		E54BD06B217514D600C98AEB /* na.png in Resources */ = {isa = PBXBuildFile; fileRef = E54BD06A217514D600C98AEB /* na.png */; };
-		E54BD06D2175163200C98AEB /* bg-graph-white.png in Resources */ = {isa = PBXBuildFile; fileRef = E54BD06C2175163200C98AEB /* bg-graph-white.png */; };
+		E54BD06D2175163200C98AEB /* bg_graph_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E54BD06C2175163200C98AEB /* bg_graph_white.png */; };
 		E54BD0762175438F00C98AEB /* CO2graph.sks in Resources */ = {isa = PBXBuildFile; fileRef = E54BD0752175438F00C98AEB /* CO2graph.sks */; };
 		E54BD0782175443500C98AEB /* GraphScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BD0772175443500C98AEB /* GraphScene.swift */; };
 		E54BD07A2175447500C98AEB /* CO2country.sks in Resources */ = {isa = PBXBuildFile; fileRef = E54BD0792175447500C98AEB /* CO2country.sks */; };
 		E54BD07C2175449800C98AEB /* CountryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54BD07B2175449800C98AEB /* CountryScene.swift */; };
+		E5A1390121754BE300440078 /* earth_button.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A1390021754BE300440078 /* earth_button.png */; };
+		E5A139032175525100440078 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A139022175525100440078 /* GameScene.swift */; };
+		E5A139052175671D00440078 /* CountryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A139042175671D00440078 /* CountryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +33,7 @@
 		E507E3E32175483300A1AE14 /* plot_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plot_large.png; sourceTree = "<group>"; };
 		E54BD04F2175110400C98AEB /* miasma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = miasma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54BD0522175110400C98AEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E54BD0542175110400C98AEB /* CO2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CO2.sks; sourceTree = "<group>"; };
+		E54BD0542175110400C98AEB /* CO2map.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CO2map.sks; sourceTree = "<group>"; };
 		E54BD0562175110400C98AEB /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		E54BD0582175110400C98AEB /* MapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScene.swift; sourceTree = "<group>"; };
 		E54BD05A2175110400C98AEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -39,11 +42,14 @@
 		E54BD0622175110800C98AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E54BD0642175110800C98AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E54BD06A217514D600C98AEB /* na.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = na.png; sourceTree = "<group>"; };
-		E54BD06C2175163200C98AEB /* bg-graph-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-graph-white.png"; sourceTree = "<group>"; };
+		E54BD06C2175163200C98AEB /* bg_graph_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_graph_white.png; sourceTree = "<group>"; };
 		E54BD0752175438F00C98AEB /* CO2graph.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CO2graph.sks; sourceTree = "<group>"; };
 		E54BD0772175443500C98AEB /* GraphScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphScene.swift; sourceTree = "<group>"; };
 		E54BD0792175447500C98AEB /* CO2country.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CO2country.sks; sourceTree = "<group>"; };
 		E54BD07B2175449800C98AEB /* CountryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryScene.swift; sourceTree = "<group>"; };
+		E5A1390021754BE300440078 /* earth_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth_button.png; sourceTree = "<group>"; };
+		E5A139022175525100440078 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E5A139042175671D00440078 /* CountryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +84,15 @@
 			children = (
 				E54BD06E2175164900C98AEB /* images */,
 				E54BD0522175110400C98AEB /* AppDelegate.swift */,
-				E54BD0542175110400C98AEB /* CO2.sks */,
+				E54BD0542175110400C98AEB /* CO2map.sks */,
+				E54BD0582175110400C98AEB /* MapScene.swift */,
 				E54BD0792175447500C98AEB /* CO2country.sks */,
 				E54BD07B2175449800C98AEB /* CountryScene.swift */,
+				E5A139042175671D00440078 /* CountryData.swift */,
 				E54BD0752175438F00C98AEB /* CO2graph.sks */,
 				E54BD0772175443500C98AEB /* GraphScene.swift */,
 				E54BD0562175110400C98AEB /* Actions.sks */,
-				E54BD0582175110400C98AEB /* MapScene.swift */,
+				E5A139022175525100440078 /* GameScene.swift */,
 				E54BD05A2175110400C98AEB /* GameViewController.swift */,
 				E54BD05C2175110400C98AEB /* Main.storyboard */,
 				E54BD05F2175110800C98AEB /* Assets.xcassets */,
@@ -97,10 +105,11 @@
 		E54BD06E2175164900C98AEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E5A1390021754BE300440078 /* earth_button.png */,
 				E507E3E32175483300A1AE14 /* plot_large.png */,
 				E507E3E22175483300A1AE14 /* plot_small.png */,
 				E54BD06A217514D600C98AEB /* na.png */,
-				E54BD06C2175163200C98AEB /* bg-graph-white.png */,
+				E54BD06C2175163200C98AEB /* bg_graph_white.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -166,11 +175,12 @@
 				E54BD05E2175110400C98AEB /* Main.storyboard in Resources */,
 				E54BD0762175438F00C98AEB /* CO2graph.sks in Resources */,
 				E507E3E42175483300A1AE14 /* plot_small.png in Resources */,
+				E5A1390121754BE300440078 /* earth_button.png in Resources */,
 				E54BD07A2175447500C98AEB /* CO2country.sks in Resources */,
-				E54BD0552175110400C98AEB /* CO2.sks in Resources */,
+				E54BD0552175110400C98AEB /* CO2map.sks in Resources */,
 				E507E3E52175483300A1AE14 /* plot_large.png in Resources */,
 				E54BD0602175110800C98AEB /* Assets.xcassets in Resources */,
-				E54BD06D2175163200C98AEB /* bg-graph-white.png in Resources */,
+				E54BD06D2175163200C98AEB /* bg_graph_white.png in Resources */,
 				E54BD0632175110800C98AEB /* LaunchScreen.storyboard in Resources */,
 				E54BD06B217514D600C98AEB /* na.png in Resources */,
 				E54BD0572175110400C98AEB /* Actions.sks in Resources */,
@@ -184,7 +194,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A139032175525100440078 /* GameScene.swift in Sources */,
 				E54BD0592175110400C98AEB /* MapScene.swift in Sources */,
+				E5A139052175671D00440078 /* CountryData.swift in Sources */,
 				E54BD05B2175110400C98AEB /* GameViewController.swift in Sources */,
 				E54BD0532175110400C98AEB /* AppDelegate.swift in Sources */,
 				E54BD07C2175449800C98AEB /* CountryScene.swift in Sources */,
