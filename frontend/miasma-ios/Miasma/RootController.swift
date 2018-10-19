@@ -25,10 +25,6 @@ class RootController: UITabBarController {
         
         viewControllers = [clockController, poisonController, blameController]
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
 
     /*
     // MARK: - Navigation

@@ -13,13 +13,16 @@ class Interval {
     
     static func until(_ deadline: Date) -> String {
         var interval: String = ""
-        var year: Int = 2035
         var years: Int = 0
         var months: Int = 0
         var days: Int = 0
         var hours: Int = 0
         var minutes: Int = 0
         var seconds: Int = 0
+        
+        let yearGetter = DateFormatter()
+        yearGetter.dateFormat = "yyyy"
+        var year = Int(yearGetter.string(from: deadline))!
         
         // interval in seconds
         let now = Date()

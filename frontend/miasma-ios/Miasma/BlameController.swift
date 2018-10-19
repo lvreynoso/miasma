@@ -17,7 +17,7 @@ struct Country {
 class BlameController: UITableViewController {
     
     var regions = ["North America", "Europe", "Asia", "South America", "Central America", "Africa", "Caribbean", "Middle East"]
-    var northAmerica = [Country(name: "United States of America", flag: nil, highlight: "First World, Global Problem"), Country(name: "Canada", flag: nil, highlight: "High per capita Carbon Dioxide Output"), Country(name: "Mexico", flag: nil, highlight: "Mexico City is notorious for its smog")]
+    var northAmerica = [Country(name: "United States of America", flag: UIImage(named: "usa"), highlight: "First World, Global Problem"), Country(name: "Canada", flag: UIImage(named: "can"), highlight: "High per capita Carbon Dioxide Output"), Country(name: "Mexico", flag: UIImage(named: "mex"), highlight: "Mexico City is notorious for its smog")]
     var europe = [Country(name: "United Kingdom", flag: nil, highlight: "Can Brexit Europe, can't escape pollution"), Country(name: "France", flag: nil, highlight: "Record heat waves")]
     var asia = [Country(name: "China", flag: nil, highlight: "The world's worst polluter"), Country(name: "India", flag: nil, highlight: "Sacred land, toxic water")]
     var southAmerica = [Country(name: "Brazil", flag: nil, highlight: "Burning the Amazon rainforest")]
@@ -70,6 +70,10 @@ class BlameController: UITableViewController {
         
         if let section = countries[indexPath.section] {
             cell.textLabel?.text = section[indexPath.row].name
+            if let flag = section[indexPath.row].flag {
+                cell.imageView?.image = flag
+            }
+            cell.detailTextLabel?.text = section[indexPath.row].highlight
         } else {
             cell.textLabel?.text = "Test"
         }
@@ -83,6 +87,10 @@ class BlameController: UITableViewController {
         } else {
             return "Error"
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.default
     }
 
     /*
