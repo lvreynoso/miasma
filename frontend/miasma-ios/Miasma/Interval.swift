@@ -37,14 +37,11 @@ class Interval {
         
         let monthSeconds = Months.init()
         
-        var timeIsMoreThanOneYear: Bool = false
-        var timeIsMoreThanOneMonth: Bool = false
+        var timeIsMoreThanOneYear: Bool = true
+        var timeIsMoreThanOneMonth: Bool = true
         
         // first we whittle down the years
         // 2034 & 2035 are common years
-        if timeInterval > commonYear {
-            timeIsMoreThanOneYear = true
-        }
         
         while timeIsMoreThanOneYear {
             switch year {
@@ -75,31 +72,6 @@ class Interval {
         
         // check if the time remaining is more than what's in next month
         var nextMonth = (currentMonth + 1) % 12
-        switch nextMonth {
-        case 01, 03, 05, 07, 08, 10, 12:
-            if timeInterval > monthSeconds.thirtyOne {
-                timeIsMoreThanOneMonth = true
-            }
-        case 04, 06, 09, 11:
-            if timeInterval > monthSeconds.thirty {
-                timeIsMoreThanOneMonth = true
-            }
-        case 02:
-            switch year {
-            case 2020, 2024, 2028, 2032:
-                if timeInterval > monthSeconds.twentyNine {
-                    timeIsMoreThanOneMonth = true
-                }
-            default:
-                if timeInterval > monthSeconds.twentyEight {
-                    timeIsMoreThanOneMonth = true
-                }
-            }
-        default:
-            if timeInterval > monthSeconds.twentyEight {
-                timeIsMoreThanOneMonth = true
-            }
-        }
         
         // whittle it down
         while timeIsMoreThanOneMonth {

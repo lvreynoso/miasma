@@ -17,10 +17,10 @@ class RootController: UITabBarController {
         let clockController = ClockController()
         clockController.tabBarItem = UITabBarItem(title: "Countdown", image: UIImage(named: "countdown"), tag: 0)
         
-        let poisonController = PoisonController()
+        let poisonController:PoisonController = UIStoryboard(name: "Poisons", bundle: nil).instantiateViewController(withIdentifier: "Poisons") as! PoisonController
         poisonController.tabBarItem = UITabBarItem(title: "Poisons", image: UIImage(named: "poison"), tag: 1)
         
-        let blameController = BlameController()
+        let blameController:BlameController = UIStoryboard(name: "Blame", bundle: nil).instantiateViewController(withIdentifier: "Blame") as! BlameController
         blameController.tabBarItem = UITabBarItem(title: "Blame", image: UIImage(named: "blame"), tag: 2)
         
         viewControllers = [clockController, poisonController, blameController]
