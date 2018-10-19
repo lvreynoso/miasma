@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  miasma
+//  Miasma
 //
-//  Created by Lucia Reynoso on 10/15/18.
+//  Created by Lucia Reynoso on 10/18/18.
 //  Copyright © 2018 Lucia Reynoso. All rights reserved.
 //
 
@@ -12,10 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let rootController = RootController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        rootController.selectedIndex = 0
+        window?.rootViewController = rootController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -30,11 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // from background
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // after launch
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
