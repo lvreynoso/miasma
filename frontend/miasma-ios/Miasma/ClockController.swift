@@ -11,6 +11,11 @@ import UIKit
 
 class ClockController: UIViewController {
     
+    var deadline: Date?
+    var apocalypse: String?
+    var clockValues: UILabel!
+    var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black
@@ -20,35 +25,48 @@ class ClockController: UIViewController {
         let safeArea = UIView(frame: bounds)
         // testBoundaries(in: safeArea)
         setupCountdownClock(in: safeArea)
+        setupExplainerLabel(in: safeArea)
         self.view.addSubview(safeArea)
         
-        print("view loaded!")
-
+        startUpdating()
     }
     
-    func testBoundaries(in testView: UIView) {
-        let top = setupClockValueLabel("top")
-        top.sizeToFit()
-        top.center = CGPoint(x: testView.center.x, y: testView.bounds.minY)
-        let bottom = setupClockValueLabel("bottom")
-        bottom.sizeToFit()
-        bottom.center = CGPoint(x: testView.center.x, y: testView.bounds.maxY)
-        let cents = setupClockValueLabel("center")
-        cents.sizeToFit()
-        cents.center = testView.center
-        
-        testView.addSubview(top)
-        testView.addSubview(bottom)
-        testView.addSubview(cents)
-    }
     
     func setupCountdownClock(in clockView: UIView) {
-        let clockValues = setupClockValueLabel("16\n8\n2\n14\n12\n53")
-        clockValues.center = CGPoint(x: clockView.center.x - CGFloat(150), y: (clockValues.bounds.size.height / 2))
+        // access the countdown date
+        guard let deadlineUrl = Bundle.main.url(forResource: "Deadline", withExtension: "plist") else {
+            print("can't find Deadline.plist")
+            return
+        }
+        do {
+            let deadlinePlist = try PropertyListSerialization.propertyList(from: Data(contentsOf: deadlineUrl), options: [], format: nil) as? [String: Any]
+            
+            self.deadline = deadlinePlist?["Point of No Return"] as? Date
+        } catch {
+            print("can't create array from plist")
+            return
+        }
         
+        // where the magic happens
+        if self.deadline != nil {
+            self.apocalypse = Interval.until(self.deadline!)
+        }
+        
+        // create the value labels
+        clockValues = setupClockValueLabel(apocalypse!)
+        clockValues.center = CGPoint(x: clockView.center.x - CGFloat(150), y: (clockValues!.bounds.size.height / 2))
+        
+        // create the ymd-hms labels
         let clockLabels = setupClockLabelText("years\nmonths\ndays\nhours\nminutes\nseconds")
         clockLabels.center = CGPoint(x: clockView.center.x, y: (clockLabels.bounds.size.height / 2))
         
+       
+        
+        clockView.addSubview(clockValues)
+        clockView.addSubview(clockLabels)
+    }
+    
+    func setupExplainerLabel(in clockView: UIView) {
         let explainerLabel = UILabel()
         explainerLabel.text = "until the point of no return."
         explainerLabel.textAlignment = .center
@@ -57,11 +75,7 @@ class ClockController: UIViewController {
         explainerLabel.sizeToFit()
         explainerLabel.center = CGPoint(x: clockView.center.x, y: clockView.center.y)
         
-        clockView.addSubview(clockValues)
-        clockView.addSubview(clockLabels)
         clockView.addSubview(explainerLabel)
-        
-        print("labels added!")
     }
     
     func setupClockValueLabel(_ text: String) -> UILabel {
@@ -88,4 +102,14 @@ class ClockController: UIViewController {
         return returnLabel
     }
     
+    func startUpdating() {
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {_ in
+                guard let deadline = self.deadline else { return }
+                let updatedApocalypse = Interval.until(deadline)
+                self.clockValues.text = updatedApocalypse
+            })
+        }
+    }
+
 }

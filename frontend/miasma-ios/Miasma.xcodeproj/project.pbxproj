@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5F8623E2179929100F141EA /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8623D2179929100F141EA /* Interval.swift */; };
 		E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */; };
 		E5FC35D321791ABC002AB9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC35D221791ABC002AB9CA /* Assets.xcassets */; };
 		E5FC35D621791ABC002AB9CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5FC35D421791ABC002AB9CA /* LaunchScreen.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5F8623D2179929100F141EA /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		E5FC35C821791AB8002AB9CA /* Miasma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miasma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5FC35D221791ABC002AB9CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */,
 				E5FC35EF21796DF6002AB9CA /* RootController.swift */,
 				E5FC35E121792FE0002AB9CA /* ClockController.swift */,
+				E5F8623D2179929100F141EA /* Interval.swift */,
 				E5FC35E321793000002AB9CA /* PoisonController.swift */,
 				E5FC35E521793026002AB9CA /* BlameController.swift */,
 				E5FC35D221791ABC002AB9CA /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			files = (
 				E5FC35F021796DF6002AB9CA /* RootController.swift in Sources */,
 				E5FC35E221792FE0002AB9CA /* ClockController.swift in Sources */,
+				E5F8623E2179929100F141EA /* Interval.swift in Sources */,
 				E5FC35E421793000002AB9CA /* PoisonController.swift in Sources */,
 				E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */,
 				E5FC35E621793026002AB9CA /* BlameController.swift in Sources */,
