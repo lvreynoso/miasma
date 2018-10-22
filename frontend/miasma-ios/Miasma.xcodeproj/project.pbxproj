@@ -11,6 +11,8 @@
 		E599632D217A73B500C943FA /* BlameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599632C217A73B500C943FA /* BlameController.swift */; };
 		E599632F217A740600C943FA /* Poisons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E599632E217A740600C943FA /* Poisons.storyboard */; };
 		E5996331217A80AE00C943FA /* Blame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5996330217A80AE00C943FA /* Blame.storyboard */; };
+		E5C233C2217D396900C2ED95 /* Clock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C233C1217D396900C2ED95 /* Clock.storyboard */; };
+		E5C233C4217D45D600C2ED95 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C233C3217D45D600C2ED95 /* ClockView.swift */; };
 		E5F8623E2179929100F141EA /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8623D2179929100F141EA /* Interval.swift */; };
 		E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */; };
 		E5FC35D321791ABC002AB9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC35D221791ABC002AB9CA /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		E599632C217A73B500C943FA /* BlameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlameController.swift; sourceTree = "<group>"; };
 		E599632E217A740600C943FA /* Poisons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Poisons.storyboard; sourceTree = "<group>"; };
 		E5996330217A80AE00C943FA /* Blame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Blame.storyboard; sourceTree = "<group>"; };
+		E5C233C1217D396900C2ED95 /* Clock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Clock.storyboard; sourceTree = "<group>"; };
+		E5C233C3217D45D600C2ED95 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		E5F8623D2179929100F141EA /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		E5FC35C821791AB8002AB9CA /* Miasma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miasma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */,
 				E5FC35EF21796DF6002AB9CA /* RootController.swift */,
 				E5FC35E121792FE0002AB9CA /* ClockController.swift */,
+				E5C233C3217D45D600C2ED95 /* ClockView.swift */,
+				E5C233C1217D396900C2ED95 /* Clock.storyboard */,
 				E5F8623D2179929100F141EA /* Interval.swift */,
 				E599632A217A738B00C943FA /* PoisonController.swift */,
 				E599632E217A740600C943FA /* Poisons.storyboard */,
@@ -145,6 +151,7 @@
 				E5FC35EA21793DF1002AB9CA /* Deadline.plist in Resources */,
 				E5FC35D621791ABC002AB9CA /* LaunchScreen.storyboard in Resources */,
 				E5FC35D321791ABC002AB9CA /* Assets.xcassets in Resources */,
+				E5C233C2217D396900C2ED95 /* Clock.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +166,7 @@
 				E5FC35E221792FE0002AB9CA /* ClockController.swift in Sources */,
 				E5F8623E2179929100F141EA /* Interval.swift in Sources */,
 				E599632B217A738B00C943FA /* PoisonController.swift in Sources */,
+				E5C233C4217D45D600C2ED95 /* ClockView.swift in Sources */,
 				E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */,
 				E599632D217A73B500C943FA /* BlameController.swift in Sources */,
 			);

@@ -12,27 +12,216 @@ import UIKit
 class ClockController: UIViewController {
     
     var deadline: Date?
-    var apocalypse: String?
+    var apocalypse: [Int] = []
     var clockValues: UILabel!
     var timer: Timer?
     
+    @IBOutlet weak var clockView: ClockView!
+    @IBOutlet weak var learnMore: UIButton!
+    
+    // clock digits
+    var yearDigitOne: UIImageView?
+    var yearDigitTwo: UIImageView?
+    var monthDigitOne: UIImageView?
+    var monthDigitTwo: UIImageView?
+    var dayDigitOne: UIImageView?
+    var dayDigitTwo: UIImageView?
+    
+    var hourDigitOne: UIImageView?
+    var hourDigitTwo: UIImageView?
+    var minuteDigitOne: UIImageView?
+    var minuteDigitTwo: UIImageView?
+    var secondDigitOne: UIImageView?
+    var secondDigitTwo: UIImageView?
+    
+    // clock year month day labels
+    var yearLabel: UIImageView?
+    var monthLabel: UIImageView?
+    var dayLabel: UIImageView?
+    var colonOne: UIImageView?
+    var colonTwo: UIImageView?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .black
         
-        let bounds = CGRect(x: 0, y: 40, width: self.view.bounds.width, height: self.view.bounds.height - 40)
+        setupCountdownClock(in: clockView, transitionSize: nil)
         
-        let safeArea = UIView(frame: bounds)
-        // testBoundaries(in: safeArea)
-        setupCountdownClock(in: safeArea)
-        setupExplainerLabel(in: safeArea)
-        self.view.addSubview(safeArea)
+        updateClock(in: clockView)
         
         startUpdating()
+ 
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        clockView.subviews.map { $0.removeFromSuperview() }
+        setupCountdownClock(in: clockView, transitionSize: size)
+        updateClock(in: clockView)
+    }
     
-    func setupCountdownClock(in clockView: UIView) {
+    func setupCountdownClock(in setupView: UIView, transitionSize: CGSize?) {
+        var maxWidth: CGFloat = 0
+        if let transition = transitionSize {
+            maxWidth = transition.width
+        } else {
+            maxWidth = (setupView.frame.maxX - setupView.frame.minX)
+        }
+        let width = maxWidth * 0.9
+        let ymdSpacing = (maxWidth - width) / 10
+        let ymdWidth = width / 9
+        let ymdHeight = ymdWidth * 1.817
+        ymdClock(in: setupView, spacing: ymdSpacing, imgWidth: ymdWidth, imgHeight: ymdHeight)
+        
+        let hmsSpacing = (maxWidth - width) / 9
+        let hmsWidth = width / 7
+        
+        // TODO: Fix this ugly code
+        var spacing: [CGFloat] = []
+        spacing.append((hmsWidth / 4) + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing)
+        spacing.append((hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing + hmsWidth + hmsSpacing + (hmsWidth / 4) + hmsSpacing + hmsWidth + hmsSpacing)
+        hmsClock(in: setupView, spacing: spacing, imgWidth: hmsWidth, yBuffer: ymdHeight / 1.5)
+    }
+    
+    func ymdClock(in setupView: UIView, spacing: CGFloat, imgWidth: CGFloat, imgHeight: CGFloat) {
+        var displays: [UIImageView] = []
+        let labelHeight: CGFloat = 0.85 * imgWidth
+        for index in 1...9 {
+            switch index {
+            case 3, 6, 9:
+                // label code
+                let yPosition: CGFloat = labelHeight / 2
+                let shape = CGRect(x: (CGFloat(index) * spacing) + (CGFloat(index) * (imgWidth)) - imgWidth, y: yPosition + (imgHeight - labelHeight), width: imgWidth, height: labelHeight)
+                let thisView = UIImageView(frame: shape)
+                displays.append(thisView)
+            default:
+                // digit code
+                let yPosition: CGFloat = imgHeight / 2
+                let shape = CGRect(x: (CGFloat(index) * spacing) + (CGFloat(index) * (imgWidth)) - imgWidth, y: yPosition, width: imgWidth, height: imgHeight)
+                let thisView = UIImageView(frame: shape)
+                displays.append(thisView)
+            }
+        }
+        
+        // set the digits
+        yearDigitOne = displays[0]
+        yearDigitOne?.image = UIImage(named: "d8")
+        if let addView = yearDigitOne {
+            setupView.addSubview(addView)
+        }
+        yearDigitTwo = displays[1]
+        yearDigitTwo?.image = UIImage(named: "d8")
+        if let addView = yearDigitTwo {
+            setupView.addSubview(addView)
+        }
+        yearLabel = displays[2]
+        yearLabel?.image = UIImage(named: "dYR")
+        if let addView = yearLabel {
+            setupView.addSubview(addView)
+        }
+        monthDigitOne = displays[3]
+        monthDigitOne?.image = UIImage(named: "d8")
+        if let addView = monthDigitOne {
+            setupView.addSubview(addView)
+        }
+        monthDigitTwo = displays[4]
+        monthDigitTwo?.image = UIImage(named: "d8")
+        if let addView = monthDigitTwo {
+            setupView.addSubview(addView)
+        }
+        monthLabel = displays[5]
+        monthLabel?.image = UIImage(named: "dMO")
+        if let addView = monthLabel {
+            setupView.addSubview(addView)
+        }
+        dayDigitOne = displays[6]
+        dayDigitOne?.image = UIImage(named: "d8")
+        if let addView = dayDigitOne {
+            setupView.addSubview(addView)
+        }
+        dayDigitTwo = displays[7]
+        dayDigitTwo?.image = UIImage(named: "d8")
+        if let addView = dayDigitTwo {
+            setupView.addSubview(addView)
+        }
+        dayLabel = displays[8]
+        dayLabel?.image = UIImage(named: "dDA")
+        if let addView = dayLabel {
+            setupView.addSubview(addView)
+        }
+    }
+    
+    func hmsClock(in setupView: UIView, spacing: [CGFloat], imgWidth: CGFloat, yBuffer: CGFloat) {
+        var displays: [UIImageView] = []
+        let colonWidth = imgWidth / 4
+        let colonHeight = colonWidth * 5.4
+        let imgHeight = imgWidth * 1.817
+        for index in 1...8 {
+            switch index {
+            case 3, 6:
+                // colon code
+                let yPosition: CGFloat = (colonHeight / 2) + (yBuffer * 2)
+                let shape = CGRect(x: spacing[index - 1], y: yPosition + (imgHeight - colonHeight), width: colonWidth, height: colonHeight)
+                let thisView = UIImageView(frame: shape)
+                displays.append(thisView)
+            default:
+                // digit code
+                let yPosition: CGFloat = (imgHeight / 2) + (yBuffer * 2)
+                let shape = CGRect(x: spacing[index - 1], y: yPosition, width: imgWidth, height: imgHeight)
+                let thisView = UIImageView(frame: shape)
+                displays.append(thisView)
+            }
+        }
+        
+        hourDigitOne = displays[0]
+        hourDigitOne?.image = UIImage(named: "d8")
+        if let addView = hourDigitOne {
+            setupView.addSubview(addView)
+        }
+        hourDigitTwo = displays[1]
+        hourDigitTwo?.image = UIImage(named: "d8")
+        if let addView = hourDigitTwo {
+            setupView.addSubview(addView)
+        }
+        colonOne = displays[2]
+        colonOne?.image = UIImage(named: "dC")
+        if let addView = colonOne {
+            setupView.addSubview(addView)
+        }
+        minuteDigitOne = displays[3]
+        minuteDigitOne?.image = UIImage(named: "d8")
+        if let addView = minuteDigitOne {
+            setupView.addSubview(addView)
+        }
+        minuteDigitTwo = displays[4]
+        minuteDigitTwo?.image = UIImage(named: "d8")
+        if let addView = minuteDigitTwo {
+            setupView.addSubview(addView)
+        }
+        colonTwo = displays[5]
+        colonTwo?.image = UIImage(named: "dC")
+        if let addView = colonTwo {
+            setupView.addSubview(addView)
+        }
+        secondDigitOne = displays[6]
+        secondDigitOne?.image = UIImage(named: "d8")
+        if let addView = secondDigitOne {
+            setupView.addSubview(addView)
+        }
+        secondDigitTwo = displays[7]
+        secondDigitTwo?.image = UIImage(named: "d8")
+        if let addView = secondDigitTwo {
+            setupView.addSubview(addView)
+        }
+    }
+    
+    func updateClock(in updateView: UIView) {
         // access the countdown date
         guard let deadlineUrl = Bundle.main.url(forResource: "Deadline", withExtension: "plist") else {
             print("can't find Deadline.plist")
@@ -46,74 +235,51 @@ class ClockController: UIViewController {
             print("can't create array from plist")
             return
         }
-        
         // where the magic happens
         if self.deadline != nil {
             self.apocalypse = Interval.until(self.deadline!)
         }
         
-        // create the value labels
-        clockValues = setupClockValueLabel(apocalypse!)
-        clockValues.center = CGPoint(x: clockView.center.x - CGFloat(150), y: (clockValues!.bounds.size.height / 2))
+        // convert the interval to strings of digits
+        let yearOne: String = "d" + String(self.apocalypse[0] / 10)
+        let yearTwo: String = "d" + String(self.apocalypse[0] % 10)
+        let monthOne: String = "d" + String(self.apocalypse[1] / 10)
+        let monthTwo: String = "d" + String(self.apocalypse[1] % 10)
+        let dayOne: String = "d" + String(self.apocalypse[2] / 10)
+        let dayTwo: String = "d" + String(self.apocalypse[2] % 10)
+        let hourOne: String = "d" + String(self.apocalypse[3] / 10)
+        let hourTwo: String = "d" + String(self.apocalypse[3] % 10)
+        let minuteOne: String = "d" + String(self.apocalypse[4] / 10)
+        let minuteTwo: String = "d" + String(self.apocalypse[4] % 10)
+        let secondOne: String = "d" + String(self.apocalypse[5] / 10)
+        let secondTwo: String = "d" + String(self.apocalypse[5] % 10)
         
-        // create the ymd-hms labels
-        let clockLabels = setupClockLabelText("years\nmonths\ndays\nhours\nminutes\nseconds")
-        clockLabels.center = CGPoint(x: clockView.center.x, y: (clockLabels.bounds.size.height / 2))
+        // print(yearOne+yearTwo+"y"+monthOne+monthTwo+"m"+dayOne+dayTwo+"d " + hourOne+hourTwo+":"+minuteOne+minuteTwo+":"+secondOne+secondTwo)
         
-       
+        yearDigitOne?.image = UIImage(named: yearOne, in: nil, compatibleWith: nil)
+        yearDigitTwo?.image = UIImage(named: yearTwo, in: nil, compatibleWith: nil)
+        monthDigitOne?.image = UIImage(named: monthOne, in: nil, compatibleWith: nil)
+        monthDigitTwo?.image = UIImage(named: monthTwo, in: nil, compatibleWith: nil)
+        dayDigitOne?.image = UIImage(named: dayOne, in: nil, compatibleWith: nil)
+        dayDigitTwo?.image = UIImage(named: dayTwo, in: nil, compatibleWith: nil)
+        hourDigitOne?.image = UIImage(named: hourOne, in: nil, compatibleWith: nil)
+        hourDigitTwo?.image = UIImage(named: hourTwo, in: nil, compatibleWith: nil)
+        minuteDigitOne?.image = UIImage(named: minuteOne, in: nil, compatibleWith: nil)
+        minuteDigitTwo?.image = UIImage(named: minuteTwo, in: nil, compatibleWith: nil)
+        secondDigitOne?.image = UIImage(named: secondOne, in: nil, compatibleWith: nil)
+        secondDigitTwo?.image = UIImage(named: secondTwo, in: nil, compatibleWith: nil)
         
-        clockView.addSubview(clockValues)
-        clockView.addSubview(clockLabels)
-    }
-    
-    func setupExplainerLabel(in clockView: UIView) {
-        let explainerLabel = UILabel()
-        explainerLabel.text = "until the point of no return."
-        explainerLabel.textAlignment = .center
-        explainerLabel.textColor = .white
-        explainerLabel.font = UIFont(name: "Helvetica", size: 30)
-        explainerLabel.sizeToFit()
-        explainerLabel.center = CGPoint(x: clockView.center.x, y: clockView.center.y)
-        
-        clockView.addSubview(explainerLabel)
-    }
-    
-    func setupClockValueLabel(_ text: String) -> UILabel {
-        let returnLabel = UILabel()
-        returnLabel.numberOfLines = 6
-        returnLabel.text = text
-        returnLabel.textAlignment = .center
-        returnLabel.textColor = .white
-        returnLabel.font = UIFont(name: "Helvetica", size: 45)
-        returnLabel.sizeToFit()
-        
-        return returnLabel
-    }
-    
-    func setupClockLabelText(_ text: String) -> UILabel {
-        let returnLabel = UILabel()
-        returnLabel.numberOfLines = 6
-        returnLabel.text = text
-        returnLabel.textAlignment = .left
-        returnLabel.textColor = .white
-        returnLabel.font = UIFont(name: "Helvetica", size: 45)
-        returnLabel.sizeToFit()
-        
-        return returnLabel
     }
     
     func startUpdating() {
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {_ in
-                guard let deadline = self.deadline else { return }
-                let updatedApocalypse = Interval.until(deadline)
-                self.clockValues.text = updatedApocalypse
+                self.updateClock(in: self.clockView)
             })
         }
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
-
 }

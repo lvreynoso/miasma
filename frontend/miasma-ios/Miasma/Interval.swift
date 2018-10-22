@@ -11,8 +11,8 @@ import UIKit
 
 class Interval {
     
-    static func until(_ deadline: Date) -> String {
-        var interval: String = ""
+    static func until(_ deadline: Date) -> [Int] {
+        var interval: [Int] = []
         var years: Int = 0
         var months: Int = 0
         var days: Int = 0
@@ -138,7 +138,11 @@ class Interval {
         
         seconds = timeInterval
         
-        interval = "\(years)\n\(months)\n\(days)\n\(hours)\n\(minutes)\n\(seconds)"
+        if years > 99 {
+            years = 99
+        }
+        
+        interval = [years, months, days, hours, minutes, seconds]
         
         return interval
     }

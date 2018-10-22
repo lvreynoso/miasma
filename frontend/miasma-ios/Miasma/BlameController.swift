@@ -32,6 +32,8 @@ class BlameController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNeedsStatusBarAppearanceUpdate()
+        
         countries[0] = northAmerica
         countries[1] = europe
         countries[2] = asia
