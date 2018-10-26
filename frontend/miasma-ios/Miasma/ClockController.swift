@@ -48,7 +48,8 @@ class ClockController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        clockView.translatesAutoresizingMaskIntoConstraints = false
+        infoView.translatesAutoresizingMaskIntoConstraints = false
         constraints = setupConstraints(transitionFrame: nil)
         NSLayoutConstraint.activate(constraints)
         setupCountdownClock(in: clockView, transitionSize: nil)
@@ -80,7 +81,7 @@ class ClockController: UIViewController {
         // update clock constraints
         if portraitMode {
             // square clock
-            let clockHeight = NSLayoutConstraint(item: clockView, attribute: .height, relatedBy: .equal, toItem: clockView, attribute: .width, multiplier: 1, constant: 0)
+            let clockHeight = NSLayoutConstraint(item: clockView, attribute: .height, relatedBy: .equal, toItem: clockView, attribute: .width, multiplier: 0.6, constant: 0)
             outputConstraints.append(clockHeight)
         } else {
             let clockHeight = NSLayoutConstraint(item: clockView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1, constant: 0)
