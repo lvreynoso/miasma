@@ -18,6 +18,7 @@ class ClockController: UIViewController {
     
     @IBOutlet weak var clockView: ClockView!
     @IBOutlet weak var learnMore: UIButton!
+    @IBOutlet weak var infoView: UIView!
     
     // clock digits
     var yearDigitOne: UIImageView?
@@ -41,23 +42,64 @@ class ClockController: UIViewController {
     var colonOne: UIImageView?
     var colonTwo: UIImageView?
     
+    // view constraints
+    var constraints: [NSLayoutConstraint] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        constraints = setupConstraints(transitionFrame: nil)
+        NSLayoutConstraint.activate(constraints)
         setupCountdownClock(in: clockView, transitionSize: nil)
-        
         updateClock(in: clockView)
-        
         startUpdating()
- 
+        print(self.view.frame)
+        print(clockView.frame)
+        print(infoView.frame)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         clockView.subviews.map { $0.removeFromSuperview() }
-        setupCountdownClock(in: clockView, transitionSize: size)
-        updateClock(in: clockView)
+        NSLayoutConstraint.deactivate(constraints)
+        constraints = setupConstraints(transitionFrame: size)
+        NSLayoutConstraint.activate(constraints)
+        print(self.view.frame)
+        print(clockView.frame)
+        print(infoView.frame)
+        print("flipped!")
+    }
+    
+    func setupConstraints(transitionFrame: CGSize?) -> [NSLayoutConstraint] {
+        var outputConstraints: [NSLayoutConstraint] = []
+        let currentFrame: CGSize = transitionFrame ?? CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        
+        let portraitMode: Bool = currentFrame.height >= currentFrame.width
+        
+        // update clock constraints
+        if portraitMode {
+            // square clock
+            let clockHeight = NSLayoutConstraint(item: clockView, attribute: .height, relatedBy: .equal, toItem: clockView, attribute: .width, multiplier: 1, constant: 0)
+            outputConstraints.append(clockHeight)
+        } else {
+            let clockHeight = NSLayoutConstraint(item: clockView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1, constant: 0)
+            outputConstraints.append(clockHeight)
+        }
+        let clockTrail = NSLayoutConstraint(item: clockView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let clockLead = NSLayoutConstraint(item: clockView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let clockCenterX = NSLayoutConstraint(item: clockView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
+        outputConstraints.append(contentsOf: [clockTrail, clockLead, clockCenterX])
+        
+        // now to update the infoView constraints
+        let infoViewTop = NSLayoutConstraint(item: infoView, attribute: .top, relatedBy: .equal, toItem: clockView, attribute: .bottom, multiplier: 1, constant: 0)
+        let infoViewHeight = NSLayoutConstraint(item: infoView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1, constant: 250)
+        let infoViewTrail = NSLayoutConstraint(item: infoView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let infoViewLead = NSLayoutConstraint(item: infoView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let infoViewCenterX = NSLayoutConstraint(item: infoView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
+        outputConstraints.append(contentsOf: [infoViewTop, infoViewHeight, infoViewTrail, infoViewLead, infoViewCenterX])
+        
+        return outputConstraints
     }
     
     func setupCountdownClock(in setupView: UIView, transitionSize: CGSize?) {
