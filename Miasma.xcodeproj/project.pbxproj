@@ -7,37 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E599632B217A738B00C943FA /* PoisonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599632A217A738B00C943FA /* PoisonController.swift */; };
-		E599632D217A73B500C943FA /* BlameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599632C217A73B500C943FA /* BlameController.swift */; };
-		E599632F217A740600C943FA /* Poisons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E599632E217A740600C943FA /* Poisons.storyboard */; };
-		E5996331217A80AE00C943FA /* Blame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5996330217A80AE00C943FA /* Blame.storyboard */; };
-		E5C233C2217D396900C2ED95 /* Clock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C233C1217D396900C2ED95 /* Clock.storyboard */; };
-		E5C233C4217D45D600C2ED95 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C233C3217D45D600C2ED95 /* ClockView.swift */; };
+		E522442121C47A110079643D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E522442021C47A110079643D /* Main.storyboard */; };
+		E522442321C47F630079643D /* ContinentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442221C47F630079643D /* ContinentsTableViewController.swift */; };
+		E522442521C484F60079643D /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442421C484F60079643D /* CountriesTableViewController.swift */; };
+		E522442721C48D9C0079643D /* CountryData.plist in Resources */ = {isa = PBXBuildFile; fileRef = E522442621C48D9C0079643D /* CountryData.plist */; };
+		E522442C21C48F7E0079643D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442B21C48F7E0079643D /* Data.swift */; };
 		E5F8623E2179929100F141EA /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8623D2179929100F141EA /* Interval.swift */; };
 		E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */; };
 		E5FC35D321791ABC002AB9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC35D221791ABC002AB9CA /* Assets.xcassets */; };
 		E5FC35D621791ABC002AB9CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5FC35D421791ABC002AB9CA /* LaunchScreen.storyboard */; };
-		E5FC35E221792FE0002AB9CA /* ClockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC35E121792FE0002AB9CA /* ClockController.swift */; };
 		E5FC35EA21793DF1002AB9CA /* Deadline.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5FC35E921793DF1002AB9CA /* Deadline.plist */; };
-		E5FC35F021796DF6002AB9CA /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC35EF21796DF6002AB9CA /* RootController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E599632A217A738B00C943FA /* PoisonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonController.swift; sourceTree = "<group>"; };
-		E599632C217A73B500C943FA /* BlameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlameController.swift; sourceTree = "<group>"; };
-		E599632E217A740600C943FA /* Poisons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Poisons.storyboard; sourceTree = "<group>"; };
-		E5996330217A80AE00C943FA /* Blame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Blame.storyboard; sourceTree = "<group>"; };
-		E5C233C1217D396900C2ED95 /* Clock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Clock.storyboard; sourceTree = "<group>"; };
-		E5C233C3217D45D600C2ED95 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		E522442021C47A110079643D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E522442221C47F630079643D /* ContinentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentsTableViewController.swift; sourceTree = "<group>"; };
+		E522442421C484F60079643D /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
+		E522442621C48D9C0079643D /* CountryData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CountryData.plist; sourceTree = "<group>"; };
+		E522442B21C48F7E0079643D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		E5F8623D2179929100F141EA /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		E5FC35C821791AB8002AB9CA /* Miasma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miasma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5FC35D221791ABC002AB9CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5FC35D521791ABC002AB9CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5FC35D721791ABC002AB9CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5FC35E121792FE0002AB9CA /* ClockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockController.swift; sourceTree = "<group>"; };
 		E5FC35E921793DF1002AB9CA /* Deadline.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Deadline.plist; sourceTree = "<group>"; };
-		E5FC35EF21796DF6002AB9CA /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +45,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E522442821C48F070079643D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E522442021C47A110079643D /* Main.storyboard */,
+				E522442221C47F630079643D /* ContinentsTableViewController.swift */,
+				E522442421C484F60079643D /* CountriesTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E522442921C48F220079643D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */,
+				E5F8623D2179929100F141EA /* Interval.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E522442A21C48F330079643D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5FC35E921793DF1002AB9CA /* Deadline.plist */,
+				E522442621C48D9C0079643D /* CountryData.plist */,
+				E522442B21C48F7E0079643D /* Data.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E5FC35BF21791AB8002AB9CA = {
 			isa = PBXGroup;
 			children = (
@@ -70,20 +93,12 @@
 		E5FC35CA21791AB8002AB9CA /* Miasma */ = {
 			isa = PBXGroup;
 			children = (
-				E5FC35CB21791AB8002AB9CA /* AppDelegate.swift */,
-				E5FC35EF21796DF6002AB9CA /* RootController.swift */,
-				E5FC35E121792FE0002AB9CA /* ClockController.swift */,
-				E5C233C3217D45D600C2ED95 /* ClockView.swift */,
-				E5C233C1217D396900C2ED95 /* Clock.storyboard */,
-				E5F8623D2179929100F141EA /* Interval.swift */,
-				E599632A217A738B00C943FA /* PoisonController.swift */,
-				E599632E217A740600C943FA /* Poisons.storyboard */,
-				E599632C217A73B500C943FA /* BlameController.swift */,
-				E5996330217A80AE00C943FA /* Blame.storyboard */,
+				E522442A21C48F330079643D /* Model */,
+				E522442821C48F070079643D /* View */,
+				E522442921C48F220079643D /* Controller */,
 				E5FC35D221791ABC002AB9CA /* Assets.xcassets */,
 				E5FC35D421791ABC002AB9CA /* LaunchScreen.storyboard */,
 				E5FC35D721791ABC002AB9CA /* Info.plist */,
-				E5FC35E921793DF1002AB9CA /* Deadline.plist */,
 			);
 			path = Miasma;
 			sourceTree = "<group>";
@@ -146,12 +161,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E599632F217A740600C943FA /* Poisons.storyboard in Resources */,
-				E5996331217A80AE00C943FA /* Blame.storyboard in Resources */,
 				E5FC35EA21793DF1002AB9CA /* Deadline.plist in Resources */,
+				E522442721C48D9C0079643D /* CountryData.plist in Resources */,
 				E5FC35D621791ABC002AB9CA /* LaunchScreen.storyboard in Resources */,
 				E5FC35D321791ABC002AB9CA /* Assets.xcassets in Resources */,
-				E5C233C2217D396900C2ED95 /* Clock.storyboard in Resources */,
+				E522442121C47A110079643D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,13 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5FC35F021796DF6002AB9CA /* RootController.swift in Sources */,
-				E5FC35E221792FE0002AB9CA /* ClockController.swift in Sources */,
+				E522442521C484F60079643D /* CountriesTableViewController.swift in Sources */,
+				E522442C21C48F7E0079643D /* Data.swift in Sources */,
 				E5F8623E2179929100F141EA /* Interval.swift in Sources */,
-				E599632B217A738B00C943FA /* PoisonController.swift in Sources */,
-				E5C233C4217D45D600C2ED95 /* ClockView.swift in Sources */,
 				E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */,
-				E599632D217A73B500C943FA /* BlameController.swift in Sources */,
+				E522442321C47F630079643D /* ContinentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

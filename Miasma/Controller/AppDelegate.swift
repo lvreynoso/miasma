@@ -13,14 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let rootController = RootController()
+//    let rootController = RootController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        rootController.selectedIndex = 0
-        window?.rootViewController = rootController
-        window?.makeKeyAndVisible()
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        rootController.selectedIndex = 0
+//        window?.rootViewController = rootController
+//        window?.makeKeyAndVisible()
         
         return true
     }
