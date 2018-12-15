@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E514E00721C4A72E00D29C3F /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E00621C4A72E00D29C3F /* DetailsTableViewController.swift */; };
+		E514E00921C4B45B00D29C3F /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E00821C4B45B00D29C3F /* CountdownViewController.swift */; };
 		E522442121C47A110079643D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E522442021C47A110079643D /* Main.storyboard */; };
 		E522442321C47F630079643D /* ContinentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442221C47F630079643D /* ContinentsTableViewController.swift */; };
 		E522442521C484F60079643D /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442421C484F60079643D /* CountriesTableViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E514E00621C4A72E00D29C3F /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
+		E514E00821C4B45B00D29C3F /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 		E522442021C47A110079643D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E522442221C47F630079643D /* ContinentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentsTableViewController.swift; sourceTree = "<group>"; };
 		E522442421C484F60079643D /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 			isa = PBXGroup;
 			children = (
 				E522442021C47A110079643D /* Main.storyboard */,
+				E514E00821C4B45B00D29C3F /* CountdownViewController.swift */,
+				E514E00621C4A72E00D29C3F /* DetailsTableViewController.swift */,
 				E522442221C47F630079643D /* ContinentsTableViewController.swift */,
 				E522442421C484F60079643D /* CountriesTableViewController.swift */,
 			);
@@ -176,10 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E514E00921C4B45B00D29C3F /* CountdownViewController.swift in Sources */,
 				E522442521C484F60079643D /* CountriesTableViewController.swift in Sources */,
 				E522442C21C48F7E0079643D /* Data.swift in Sources */,
 				E5F8623E2179929100F141EA /* Interval.swift in Sources */,
 				E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */,
+				E514E00721C4A72E00D29C3F /* DetailsTableViewController.swift in Sources */,
 				E522442321C47F630079643D /* ContinentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

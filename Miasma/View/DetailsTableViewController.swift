@@ -1,5 +1,5 @@
 //
-//  CountriesTableViewController.swift
+//  DetailsTableViewController.swift
 //  Miasma
 //
 //  Created by Lucia Reynoso on 12/14/18.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CountriesTableViewController: UITableViewController {
+class DetailsTableViewController: UITableViewController {
     
-    var receivedContinent: String?
-    var regions: [String] = []
-    var regionData: [String: [Dictionary<String, Any>]] = [:]
+    var receivedCountry: String?
+    var receivedCountryData: [String: Any]?
+    var pollutants: [Dictionary<String, Any>]?
+    let displayOrder = [["total", "Total"], ["perCapita", "Per Capita"], ["perGDP", "Per GDP"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,68 +23,58 @@ class CountriesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        guard let continent = receivedContinent else {
-            print("Did not find a proper continent, aborting...")
-            return
-        }
-        self.title = continent
         
-        // setup for the proper continent
-        guard let continentData = getContinentData(continent: continent) else {
-            print("Could not get continent data!")
-            return
-        }
-        guard let regionDict = continentData["Regions"] else {
-            print("Could not get region data!")
-            return
-        }
-        regions = Array(continentData["Regions"]?.keys ?? [:].keys)
-        for region in regions {
-            if let data = regionDict[region] as? [Dictionary<String, Any>] {
-                regionData[region] = data
-            }
-        }
-        
+        self.title = receivedCountry
+        pollutants = receivedCountryData?["pollutants"] as? [Dictionary<String, Any>]
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        let sections = regions.count
+        var sections = 0
+        if pollutants != nil {
+            sections = pollutants!.count
+        }
         return sections
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return regions[section]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let region = regions[section]
-        if let sectionArray = regionData[region] {
-            return sectionArray.count
-        } else {
+        guard let pollutant = pollutants?[section] else {
+            print("Could not find pollutant")
             return 0
         }
+        return displayOrder.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let pollutant = pollutants?[section] else {
+            print("Could not find pollutant")
+            return nil
+        }
+        guard let name = pollutant["name"] as? String else {
+            print("Invalid value found for pollutant name")
+            return nil
+        }
+        return name
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "country", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
 
         // Configure the cell...
-        let region = regions[indexPath.section]
-        guard let countriesArray = regionData[region] else {
-            print("Error retrieving region data")
+        guard let pollutant = pollutants?[indexPath.section] else {
+            print("Could not find pollutant")
             return cell
         }
-        let country = countriesArray[indexPath.row]
-        guard let countryName = country["name"] as? String else {
-            print("Error retrieving country data")
+        let property = displayOrder[indexPath.row]
+        guard let value = pollutant[property[0]] else {
+            print("Could not unwrap optional 'value'")
             return cell
         }
-        
-        cell.textLabel?.text = countryName
+        cell.textLabel?.text = property[1]
+        cell.detailTextLabel?.text = "\(String(describing: value))"
         
         return cell
     }
@@ -123,34 +114,14 @@ class CountriesTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        guard let selectedCell = sender as? UITableViewCell else {
-            print("Segue to next view was not initiated by a cell in the table!")
-            return
-        }
-        guard let nextVC = segue.destination as? DetailsTableViewController else {
-            print("Segue destination is not a country table view controller!")
-            return
-        }
-        guard let indexPath = self.tableView.indexPath(for: selectedCell) else {
-            print("Couldn't find cell index")
-            return
-        }
-        let region = regions[indexPath.section]
-        guard let countriesArray = regionData[region] else {
-            print("Error retrieving region data")
-            return
-        }
-        let country = countriesArray[indexPath.row]
-        nextVC.receivedCountry = selectedCell.textLabel?.text
-        nextVC.receivedCountryData = country
     }
-    
+    */
 
 }
