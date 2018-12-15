@@ -8,7 +8,7 @@
 
 import Foundation
 
-func getWorldData(plist: String) -> [String: Any]? {
+func getPlistData(plist: String) -> [String: Any]? {
     var data: [String: Any]?
     // access the countdown date
     guard let dataUrl = Bundle.main.url(forResource: plist, withExtension: "plist") else {
@@ -27,7 +27,7 @@ func getWorldData(plist: String) -> [String: Any]? {
 }
 
 func getContinentData(continent: String) -> [String : Dictionary<String, Any>]? {
-    guard let worldData = getWorldData(plist: "CountryData") else {
+    guard let worldData = getPlistData(plist: "CountryData") else {
         print("Could not get world data!")
         return nil
     }
@@ -38,4 +38,16 @@ func getContinentData(continent: String) -> [String : Dictionary<String, Any>]? 
         return nil
     }
     return continentData
+}
+
+func getPollutionData() -> [Dictionary<String, Any>]? {
+    guard let rootData = getPlistData(plist: "PoisonData") else {
+        print("Could not get plist data from PoisonData.plist!")
+        return nil
+    }
+    guard let pollutionData = rootData["poisons"] as? [Dictionary<String, Any>] else {
+        print("Poison table not found in plist data!")
+        return nil
+    }
+    return pollutionData
 }

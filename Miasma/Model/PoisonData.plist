@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>poisons</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Carbon Dioxide</string>
+			<key>formula</key>
+			<string>CO2</string>
+			<key>lifetime</key>
+			<integer>63</integer>
+			<key>gwp20</key>
+			<integer>1</integer>
+			<key>gwp100</key>
+			<integer>1</integer>
+			<key>gwp500</key>
+			<integer>1</integer>
+			<key>conc</key>
+			<string>395.4 ppm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Methane</string>
+			<key>formula</key>
+			<string>CH4</string>
+			<key>lifetime</key>
+			<integer>12</integer>
+			<key>gwp20</key>
+			<integer>84</integer>
+			<key>gwp100</key>
+			<integer>28</integer>
+			<key>gwp500</key>
+			<real>7.6</real>
+			<key>conc</key>
+			<string>1827 ppb</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Nitrous Oxide</string>
+			<key>formula</key>
+			<string>N20</string>
+			<key>lifetime</key>
+			<integer>121</integer>
+			<key>gwp20</key>
+			<integer>264</integer>
+			<key>gwp100</key>
+			<integer>265</integer>
+			<key>gwp500</key>
+			<integer>153</integer>
+			<key>conc</key>
+			<string>325 ppb</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -33,7 +33,7 @@
         <!--Poisons-->
         <scene sceneID="bEM-ai-Fvn">
             <objects>
-                <tableViewController id="x8g-Uy-7cY" sceneMemberID="viewController">
+                <tableViewController id="x8g-Uy-7cY" customClass="PoisonsTableViewController" customModule="Miasma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CTv-vV-TaO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="m9U-zd-Hfm" kind="showDetail" id="SGr-ag-0RU"/>
+                                    <segue destination="m9U-zd-Hfm" kind="show" identifier="toPoisonDetail" id="SGr-ag-0RU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -62,21 +62,37 @@
             </objects>
             <point key="canvasLocation" x="1905" y="-330"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Poisons Detail Table View Controller-->
         <scene sceneID="WNt-go-PYg">
             <objects>
-                <tableViewController id="m9U-zd-Hfm" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BeW-Pn-N01">
+                <tableViewController id="m9U-zd-Hfm" customClass="PoisonsDetailTableViewController" customModule="Miasma" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="BeW-Pn-N01">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="poisonDetail" id="aLx-IX-t0L">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="poisonDetail" textLabel="fwy-uL-cDW" detailTextLabel="uX0-Zp-4PO" style="IBUITableViewCellStyleValue1" id="aLx-IX-t0L">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aLx-IX-t0L" id="ShB-VB-Lbc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fwy-uL-cDW">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uX0-Zp-4PO">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -309,10 +325,36 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shy-W4-66r">
+                                <rect key="frame" x="5" y="298" width="365" height="229.5"/>
+                                <string key="text">When this countdown ends on the summer solstice of 2035, humanity will have passed its deadline to avoid catastrophic climate change. After that time, 2° celsius of warming will be inevitable by the end of the century. The climate apocalypse will have begun.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sK-xw-FNG">
+                                <rect key="frame" x="122.5" y="547.5" width="130" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="nKi-HO-d2o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Find out more">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="launchClimateWebsite:" destination="dft-rj-bbg" eventType="touchUpInside" id="lGx-gZ-1fa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ju8-8Z-s1a" firstAttribute="top" secondItem="poI-zz-1Ly" secondAttribute="bottom" constant="20" id="2Xl-fb-w38"/>
+                            <constraint firstItem="GpC-Wd-wdt" firstAttribute="trailing" secondItem="shy-W4-66r" secondAttribute="trailing" constant="5" id="2dT-2v-ADU"/>
+                            <constraint firstItem="shy-W4-66r" firstAttribute="top" secondItem="Ju8-8Z-s1a" secondAttribute="bottom" constant="20" id="BbA-px-wx3"/>
+                            <constraint firstItem="5sK-xw-FNG" firstAttribute="centerX" secondItem="UBn-0W-DQZ" secondAttribute="centerX" id="I6Y-0d-iHx"/>
+                            <constraint firstItem="shy-W4-66r" firstAttribute="leading" secondItem="GpC-Wd-wdt" secondAttribute="leading" constant="5" id="Iu8-ab-HZD"/>
+                            <constraint firstItem="5sK-xw-FNG" firstAttribute="top" secondItem="shy-W4-66r" secondAttribute="bottom" constant="20" id="KcA-CE-ZN8"/>
                             <constraint firstItem="Ju8-8Z-s1a" firstAttribute="leading" secondItem="GpC-Wd-wdt" secondAttribute="leading" constant="5" id="L5K-6V-8Lf"/>
                             <constraint firstItem="poI-zz-1Ly" firstAttribute="top" secondItem="GpC-Wd-wdt" secondAttribute="top" constant="20" id="Toq-64-j4j"/>
                             <constraint firstItem="GpC-Wd-wdt" firstAttribute="trailing" secondItem="Ju8-8Z-s1a" secondAttribute="trailing" constant="5" id="dGM-Y0-hlo"/>
@@ -325,6 +367,7 @@
                     <connections>
                         <outlet property="dayDigitOne" destination="xed-TM-Ryg" id="41M-xg-gIi"/>
                         <outlet property="dayDigitTwo" destination="DqF-9l-j8i" id="6JC-1f-Qu8"/>
+                        <outlet property="findOutMore" destination="5sK-xw-FNG" id="wd2-BP-vjd"/>
                         <outlet property="hourDigitOne" destination="Sgc-Ir-mxI" id="shd-9X-kUH"/>
                         <outlet property="hourDigitTwo" destination="od1-Uq-SXf" id="Hcx-hj-vyz"/>
                         <outlet property="minuteDigitOne" destination="QGF-pC-1HF" id="LV2-UE-cez"/>

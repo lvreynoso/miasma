@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E514E00721C4A72E00D29C3F /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E00621C4A72E00D29C3F /* DetailsTableViewController.swift */; };
 		E514E00921C4B45B00D29C3F /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E00821C4B45B00D29C3F /* CountdownViewController.swift */; };
+		E514E00D21C4E0CD00D29C3F /* PoisonData.plist in Resources */ = {isa = PBXBuildFile; fileRef = E514E00C21C4E0CD00D29C3F /* PoisonData.plist */; };
+		E514E00F21C4E3FE00D29C3F /* PoisonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E00E21C4E3FE00D29C3F /* PoisonsTableViewController.swift */; };
+		E514E01121C4E41200D29C3F /* PoisonsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514E01021C4E41200D29C3F /* PoisonsDetailTableViewController.swift */; };
 		E522442121C47A110079643D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E522442021C47A110079643D /* Main.storyboard */; };
 		E522442321C47F630079643D /* ContinentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442221C47F630079643D /* ContinentsTableViewController.swift */; };
 		E522442521C484F60079643D /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E522442421C484F60079643D /* CountriesTableViewController.swift */; };
@@ -24,6 +27,9 @@
 /* Begin PBXFileReference section */
 		E514E00621C4A72E00D29C3F /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 		E514E00821C4B45B00D29C3F /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
+		E514E00C21C4E0CD00D29C3F /* PoisonData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PoisonData.plist; sourceTree = "<group>"; };
+		E514E00E21C4E3FE00D29C3F /* PoisonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonsTableViewController.swift; sourceTree = "<group>"; };
+		E514E01021C4E41200D29C3F /* PoisonsDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonsDetailTableViewController.swift; sourceTree = "<group>"; };
 		E522442021C47A110079643D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E522442221C47F630079643D /* ContinentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentsTableViewController.swift; sourceTree = "<group>"; };
 		E522442421C484F60079643D /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				E522442021C47A110079643D /* Main.storyboard */,
+				E514E00E21C4E3FE00D29C3F /* PoisonsTableViewController.swift */,
+				E514E01021C4E41200D29C3F /* PoisonsDetailTableViewController.swift */,
 				E514E00821C4B45B00D29C3F /* CountdownViewController.swift */,
 				E514E00621C4A72E00D29C3F /* DetailsTableViewController.swift */,
 				E522442221C47F630079643D /* ContinentsTableViewController.swift */,
@@ -76,6 +84,7 @@
 				E5FC35E921793DF1002AB9CA /* Deadline.plist */,
 				E522442621C48D9C0079643D /* CountryData.plist */,
 				E522442B21C48F7E0079643D /* Data.swift */,
+				E514E00C21C4E0CD00D29C3F /* PoisonData.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E514E00D21C4E0CD00D29C3F /* PoisonData.plist in Resources */,
 				E5FC35EA21793DF1002AB9CA /* Deadline.plist in Resources */,
 				E522442721C48D9C0079643D /* CountryData.plist in Resources */,
 				E5FC35D621791ABC002AB9CA /* LaunchScreen.storyboard in Resources */,
@@ -184,8 +194,10 @@
 			files = (
 				E514E00921C4B45B00D29C3F /* CountdownViewController.swift in Sources */,
 				E522442521C484F60079643D /* CountriesTableViewController.swift in Sources */,
+				E514E00F21C4E3FE00D29C3F /* PoisonsTableViewController.swift in Sources */,
 				E522442C21C48F7E0079643D /* Data.swift in Sources */,
 				E5F8623E2179929100F141EA /* Interval.swift in Sources */,
+				E514E01121C4E41200D29C3F /* PoisonsDetailTableViewController.swift in Sources */,
 				E5FC35CC21791AB8002AB9CA /* AppDelegate.swift in Sources */,
 				E514E00721C4A72E00D29C3F /* DetailsTableViewController.swift in Sources */,
 				E522442321C47F630079643D /* ContinentsTableViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  DetailsTableViewController.swift
+//  PoisonsTableViewController.swift
 //  Miasma
 //
 //  Created by Lucia Reynoso on 12/14/18.
@@ -8,12 +8,10 @@
 
 import UIKit
 
-class DetailsTableViewController: UITableViewController {
+class PoisonsTableViewController: UITableViewController {
     
-    var receivedCountry: String?
-    var receivedCountryData: [String: Any]?
-    var pollutants: [Dictionary<String, Any>]?
-    let displayOrder = [["total", "Total"], ["perCapita", "Per Capita"], ["perGDP", "Per GDP"]]
+    var poisons: [Dictionary<String, Any>]?
+    let headers: [String] = ["Greenhouse Gases"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,54 +22,44 @@ class DetailsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        self.title = receivedCountry
-        pollutants = receivedCountryData?["pollutants"] as? [Dictionary<String, Any>]
+        poisons = getPollutionData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        var sections = 0
-        if pollutants != nil {
-            sections = pollutants!.count
-        }
-        return sections
+        // #warning Incomplete implementation, return the number of sections
+        return headers.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayOrder.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let pollutant = pollutants?[section] else {
-            print("Could not find pollutant")
-            return nil
+        // #warning Incomplete implementation, return the number of rows
+        var rows = 0
+        if let numberOfStoredPoisons = poisons?.count {
+            rows = numberOfStoredPoisons
         }
-        guard let name = pollutant["name"] as? String else {
-            print("Invalid value found for pollutant name")
-            return nil
-        }
-        return name
+        return rows
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "poison", for: indexPath)
 
         // Configure the cell...
-        guard let pollutant = pollutants?[indexPath.section] else {
-            print("Could not find pollutant")
+        guard let poison = poisons?[indexPath.row] else {
+            print("Unable to read poison at \(indexPath.row)")
             return cell
         }
-        let property = displayOrder[indexPath.row]
-        guard let value = pollutant[property[0]] else {
-            print("Could not unwrap optional 'value'")
+        guard let poisonName = poison["name"] as? String else {
+            print("Unable to read name of poison at \(indexPath.row)")
             return cell
         }
-        cell.textLabel?.text = property[1]
-        cell.detailTextLabel?.text = "\(String(describing: value))"
         
+        cell.textLabel?.text = poisonName
+
         return cell
     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -108,14 +96,33 @@ class DetailsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        guard let selectedCell = sender as? UITableViewCell else {
+            print("Segue to next view was not initiated by a cell in the table!")
+            return
+        }
+        guard let nextVC = segue.destination as? PoisonsDetailTableViewController else {
+            print("Segue destination is not a country table view controller!")
+            return
+        }
+        if let selectedIndex = self.tableView.indexPath(for: selectedCell) {
+            nextVC.receivedPoisonData = poisons?[selectedIndex.row]
+        } else {
+            print("Error retrieving data for poison at selected index")
+        }
+        if let selectedPoisonName = selectedCell.textLabel?.text {
+            nextVC.receivedPoisonName = selectedPoisonName
+        } else {
+            print("Error retrieving text of selected cell")
+        }
+        
     }
-    */
 
 }

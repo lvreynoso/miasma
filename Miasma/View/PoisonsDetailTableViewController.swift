@@ -1,5 +1,5 @@
 //
-//  DetailsTableViewController.swift
+//  PoisonsDetailTableViewController.swift
 //  Miasma
 //
 //  Created by Lucia Reynoso on 12/14/18.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class DetailsTableViewController: UITableViewController {
+class PoisonsDetailTableViewController: UITableViewController {
     
-    var receivedCountry: String?
-    var receivedCountryData: [String: Any]?
-    var pollutants: [Dictionary<String, Any>]?
-    let displayOrder = [["total", "Total"], ["perCapita", "Per Capita"], ["perGDP", "Per GDP"]]
+    var receivedPoisonName: String = "None"
+    var receivedPoisonData: [String: Any]?
+    let sectionHeaders: [String] = ["Poison Details"]
+    let poisonDetailKeys = ["formula", "lifetime", "gwp20", "gwp100", "gwp500", "conc"]
+    let poisonDetailTitles = ["Formula", "Lifetime", "Global Warming Potential - 20 years", "Global Warming Potential - 100 years", "Global Warming Potential - 500 years", "Atmospheric Concentraion"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,54 +25,38 @@ class DetailsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        self.title = receivedCountry
-        pollutants = receivedCountryData?["pollutants"] as? [Dictionary<String, Any>]
+        self.title = receivedPoisonName
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        var sections = 0
-        if pollutants != nil {
-            sections = pollutants!.count
-        }
-        return sections
+        // #warning Incomplete implementation, return the number of sections
+        return sectionHeaders.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayOrder.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let pollutant = pollutants?[section] else {
-            print("Could not find pollutant")
-            return nil
-        }
-        guard let name = pollutant["name"] as? String else {
-            print("Invalid value found for pollutant name")
-            return nil
-        }
-        return name
+        // #warning Incomplete implementation, return the number of rows
+        return poisonDetailKeys.count
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "poisonDetail", for: indexPath)
 
         // Configure the cell...
-        guard let pollutant = pollutants?[indexPath.section] else {
-            print("Could not find pollutant")
+        let key = poisonDetailKeys[indexPath.row]
+        guard let data = receivedPoisonData?[key] else {
+            print("Couldn't get data from key at \(indexPath)")
             return cell
         }
-        let property = displayOrder[indexPath.row]
-        guard let value = pollutant[property[0]] else {
-            print("Could not unwrap optional 'value'")
-            return cell
-        }
-        cell.textLabel?.text = property[1]
-        cell.detailTextLabel?.text = "\(String(describing: value))"
+        
+        cell.textLabel?.text = poisonDetailTitles[indexPath.row]
+        cell.detailTextLabel?.text = "\(String(describing: data))"
         
         return cell
     }
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -12,6 +12,8 @@ class CountdownViewController: UIViewController {
     
     var timer: Timer?
     
+    let climateActionURL = "https://www.egu.eu/news/428/deadline-for-climate-action-act-strongly-before-2035-to-keep-warming-below-2c/"
+    
     @IBOutlet weak var yearDigitOne: UIImageView!
     @IBOutlet weak var yearDigitTwo: UIImageView!
     @IBOutlet weak var monthDigitOne: UIImageView!
@@ -26,12 +28,27 @@ class CountdownViewController: UIViewController {
     @IBOutlet weak var secondDigitOne: UIImageView!
     @IBOutlet weak var secondDigitTwo: UIImageView!
     
+    @IBOutlet weak var findOutMore: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         updateClock()
         startUpdating()
+        
+        findOutMore.layer.cornerRadius = findOutMore.bounds.height / 4
+    }
+    
+    
+    @IBAction func launchClimateWebsite(_ sender: UIButton) {
+        if let url = URL(string: climateActionURL), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: {(success: Bool) in
+                if success {
+                    print("Launching \(url) was successful")
+                }})
+        }
     }
     
 
@@ -44,7 +61,8 @@ class CountdownViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - Clock
     func updateClock() {
         var deadline: Date?
         // access the countdown date
